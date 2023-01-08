@@ -1,4 +1,5 @@
-pragma solidity ^0.8.17;
+// SPDX-License-Identifier: GPL-30
+pragma solidity ^0.6.9;
 
 contract insuranceCompany{
 
@@ -11,15 +12,69 @@ struct clientRecord
     {
         string id; // client id
         string name; // client name
-        string insuranceType; // insurance type
-        string typeOFinjury;
+        string somkingHistrory;  // client injury history
         uint age; // age of client
+        uint salePrice;
 }
 
    
-    // save the client infor
-    function savePassangerDetails(string memory id, string memory name, string memory insuranceType, string memory typeOFinjury, uint age) public  {
-        clientRecordMapping[id] = clientRecord(id, name, insuranceType,typeOFinjury, age);
+    // save the client info
+    function savePassangerDetails(string memory id, string memory name, string memory somkingHistrory, uint age, uint salePrice) public  {
+        clientRecordMapping[id] = clientRecord(id, name, somkingHistrory, age, salePrice);
+    }
+    // get the client name and insurance paid
+
+    function getClientDetails(string memory id) public  view returns(string memory name, uint salePrice){
+        return (clientRecordMapping[id].name, clientRecordMapping[id].salePrice);
+    }
+    
+         uint private term; 
+         uint private somkingRate = 3;
+         uint private minSalePrice = 200;
+         string  private somker = "yes";
+         uint public salePrice;
+        
+
+         
+     function setTerm(uint x) public  {
+       term = x;
     }
 
-}
+  function setSomkerChecker(string memory somkingHistrory) public  {
+           
+    //once term of year set by insurance company, base on client's situtation will calculate the sale price.  
+   
+    //type one
+    //if client is a somker, then sale price for client will be the minument of price * term * somking rate
+       if(keccak256(bytes(somkingHistrory)) == keccak256(bytes(somker))) {
+
+         salePrice = term * minSalePrice * somkingRate;
+
+        }
+            
+           else{
+                //type two
+               // if isnt a smoker, than the price will be just (term * minSalePrice)
+               salePrice = term * minSalePrice;
+           }
+
+  }
+    
+
+  
+     // Receive cryptocoins from its account
+     uint public balanceReceived;
+
+    // function receiveMoney() public payable {
+    //     balanceReceived += msg.value;
+    // }
+
+   // display the balance available
+//     function getBalance() public view returns(uint) {
+//         return address(this).balance;
+//     }
+      
+ }
+
+
+
