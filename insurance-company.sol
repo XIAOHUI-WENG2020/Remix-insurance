@@ -22,7 +22,7 @@ struct clientRecord
     function saveClientDetails(string memory id, string memory name, string memory somkingHistrory, uint age, uint salePrice) public  {
         clientRecordMapping[id] = clientRecord(id, name, somkingHistrory, age, salePrice);
     }
-    // get the client name and insurance paid
+    // get the client name and client paid
 
     function getClientDetails(string memory id) public  view returns(string memory name, uint salePrice){
         return (clientRecordMapping[id].name, clientRecordMapping[id].salePrice);
