@@ -40,7 +40,7 @@ struct clientRecord
        term = x;
     }
 
-  function setSomkerChecker(string memory somkingHistrory) public  {
+  function setSalePrice(string memory somkingHistrory) public  {
            
     //once term of year set by insurance company, base on client's situtation will calculate the sale price.  
    
