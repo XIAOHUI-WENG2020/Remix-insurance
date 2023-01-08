@@ -19,7 +19,7 @@ struct clientRecord
 
    
     // save the client info
-    function savePassangerDetails(string memory id, string memory name, string memory somkingHistrory, uint age, uint salePrice) public  {
+    function saveClientDetails(string memory id, string memory name, string memory somkingHistrory, uint age, uint salePrice) public  {
         clientRecordMapping[id] = clientRecord(id, name, somkingHistrory, age, salePrice);
     }
     // get the client name and insurance paid
