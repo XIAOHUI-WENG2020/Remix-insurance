@@ -65,15 +65,6 @@ struct clientRecord
      // Receive cryptocoins from its account
      uint public balanceReceived;
 
-    // function receiveMoney() public payable {
-    //     balanceReceived += msg.value;
-    // }
-
-   // display the balance available
-//     function getBalance() public view returns(uint) {
-//         return address(this).balance;
-//     }
-      
  }
 
 
